@@ -1,0 +1,25 @@
+.inline-overflow-wrap {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.form-focus {
+    box-shadow: 0 0 0 2px #21b2a6;
+}
+
+.show-invalid {
+    display: block !important;
+}
+
+header p {
+    color: #fff !important;
+}
+
+header h1 a:hover{
+    color: unset !important;
+}
+
+#banner .inner p {
+    color: #fff !important;
+}
