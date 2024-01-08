@@ -8,6 +8,7 @@
 					<th class="text-center">Name</th>
 					<th class="text-center">Donor</th>
                     <th class="text-center">Time</th>
+                    <th class="text-center">File</th>
 					<th class="text-center">Status</th>
 					<th class="text-center">Approve</th>
 					<th class="text-center">Reject</th>
@@ -25,6 +26,11 @@
 					<td class="text-center"><?=$row["name"]?></td>
 					<td class="text-center"><?=$donorName?></td>
                     <td class="text-center"><?=$row["created_at"]?></td>
+                    <td class="text-center">
+                        <?php if (!empty($row["picture"])) { ?>
+                        <a target="_blank" href="<?=$row["picture"]?>"><i class="fa-solid fa-file fa-xl"></i></a>
+                        <?php } ?>
+                    </td>
                     <td class="text-center"><?=$status[$row["status"]]?></td>
                     <td class="text-center">
 						<?php if ($row["status"] == '0') { ?>
