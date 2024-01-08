@@ -22,7 +22,7 @@
 
             $conditionGetUser .= " AND user_donate_types.donate_type_id IN ($donateTypeId)";
         }
-        $conditionGetUser = preg_replace("/AND/", "", $conditionGetUser, 1);
+        // $conditionGetUser = preg_replace("/AND/", "", $conditionGetUser, 1);
     }
 
     $sqlGetUser = "SELECT
@@ -32,22 +32,26 @@
         FROM
             users
         INNER JOIN donor_recipient_types ON users.donor_recipient_type_id = donor_recipient_types.id
+            AND donor_recipient_types.deleted_at IS NULL
         INNER JOIN user_donate_types ON users.id = user_donate_types.user_id
+            AND user_donate_types.deleted_at IS NULL
         INNER JOIN donate_types ON user_donate_types.donate_type_id = donate_types.id
-        ".((!empty($conditionGetUser)) ? "WHERE $conditionGetUser" : "")."
+            AND donate_types.deleted_at IS NULL
+        WHERE users.deleted_at IS NULL".((!empty($conditionGetUser)) ? "$conditionGetUser" : "")."
         GROUP BY
             users.id
     ";
+    // echo $sqlGetUser;
     $resultGetUser = mysqli_query($conn, $sqlGetUser);
     if (!$resultGetUser) { die("Error: " . mysqli_error($conn)); }
 
     // Get donor_recipient_types
-    $sqlGetDonorRecipientTypes = "SELECT * FROM donor_recipient_types ORDER BY id ASC";
+    $sqlGetDonorRecipientTypes = "SELECT * FROM donor_recipient_types WHERE donor_recipient_types.deleted_at IS NULL ORDER BY id DESC";
     $resultGetDonorRecipientTypes = mysqli_query($conn, $sqlGetDonorRecipientTypes);
     if (!$resultGetDonorRecipientTypes) { die("Error: " . mysqli_error($conn)); }
 
     // Get donate_types
-    $sqlGetDonateTypes = "SELECT * FROM donate_types ORDER BY id ASC";
+    $sqlGetDonateTypes = "SELECT * FROM donate_types WHERE donate_types.deleted_at IS NULL ORDER BY id DESC";
     $resultGetDonateTypes = mysqli_query($conn, $sqlGetDonateTypes);
     if (!$resultGetDonateTypes) { die("Error: " . mysqli_error($conn)); }
     

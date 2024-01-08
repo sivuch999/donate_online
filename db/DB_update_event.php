@@ -7,9 +7,10 @@
         if (isset($_FILES['bg_event'])) {  // แปลงfileภาพ ให้สามารถให้เก็บใน database
             $image = $_FILES['bg_event']['name'];
             $image_tmp = $_FILES['bg_event']['tmp_name'];
-            move_uploaded_file($image_tmp, "image_event/" . $image); //ส่ง uploadfile ไปยัง folder ที่ต้องการ ex "image_evd/" ชื่อ folder  . $image ชื่อ file ภาพ
+            move_uploaded_file($image_tmp, "image_event/{$image}");
         }
 
+        $imagePath = "image_event/{$image}";
         $stmt = $conn->prepare("UPDATE events SET 
                 name=?,
                 date=?,
@@ -18,7 +19,7 @@
             WHERE
                 id=?
         ");
-        $stmt->bind_param("sssss", $_POST['name'], $_POST['date'], $_POST['subtitles'], $image, $_POST['id']);
+        $stmt->bind_param("sssss", $_POST['name'], $_POST['date'], $_POST['subtitles'], $imagePath, $_POST['id']);
         $stmt->execute();
 
         if($stmt->affected_rows > 0){ // ตรวจดู มีแถวใน table ที่มีการเปลี่ยนแปลงหรือไม่ ใช้กับ insert update delete 

@@ -73,7 +73,7 @@
 								</div>
 								<div class="col-4 col-12-xsmall">
 									<ul class="actions">
-										<li><input type="submit" value="register" class="btn btn-primary" name="register"/></li>
+										<li><input type="submit" value="register" class="btn btn-success" name="register"/></li>
 										<li><input type="reset" value="reset" class="btn btn-secondary"/></li>
 									</ul>
 								</div>

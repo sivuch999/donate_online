@@ -4,7 +4,6 @@
 
     // Start Users
     if (isset($_GET["trigger_status_users"]) && isset($_GET["id"])) {
-        echo "trigger_status_users";
         $stmt = $conn->prepare("UPDATE users SET status = !status WHERE id = ?");
         $stmt->bind_param("s", $_GET["id"]);
         if (!$stmt->execute()) {

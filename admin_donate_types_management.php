@@ -5,8 +5,8 @@
     <div class="row gtr-uniform">
         <div class="col-12 col-12-xsmall">
             <label>Name of donate</label>
-            <input type="hidden" name="id" value="<?=(($rowOne["id"]) ? $rowOne["id"] : "" )?>">
-            <input type="text" name="name" id="demo-username"  placeholder="Name of donate" value="<?=(($rowOne["id"]) ? $rowOne["name"] : "" )?>" required />
+            <input type="hidden" name="id" value="<?=((isset($rowOne["id"]) && $rowOne["id"]) ? $rowOne["id"] : "" )?>">
+            <input type="text" name="name" id="demo-username"  placeholder="Name of donate" value="<?=((isset($rowOne["id"]) && $rowOne["id"]) ? $rowOne["name"] : "" )?>" required />
         </div>
         <div class="col-4 col-12-xsmall">
             <ul class="actions">

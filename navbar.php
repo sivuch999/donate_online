@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<!-- <?php session_start(); ?> -->
 <header id="header">
     <h1 style="font-size: 1.2rem;"><a href="./">Donate Online</a></h1>
     <nav id="nav">

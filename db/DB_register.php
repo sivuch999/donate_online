@@ -18,10 +18,10 @@
         // Upload File
         if (isset($_FILES['picture'])) {  // แปลงfileภาพ ให้สามารถให้เก็บใน database
             $image = $_FILES['picture']['name'];
-            $image_tmp = $_FILES['picture']['tmp_name'];
-            move_uploaded_file($image_tmp, "image_evd/" . $image); //ส่ง uploadfile ไปยัง folder ที่ต้องการ ex "image_evd/" ชื่อ folder  . $image ชื่อ file ภาพ
+            $imageTmp = $_FILES['picture']['tmp_name'];
+            move_uploaded_file($imageTmp, "../image_evd/{$image}"); //ส่ง uploadfile ไปยัง folder ที่ต้องการ ex "image_evd/" ชื่อ folder  . $image ชื่อ file ภาพ
         }
-
+        
         // Verify Duplicate users.name
         $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?"); // ตรวจสอบว่า name ซ้ำกันหรือไม่
         $stmt->bind_param("s", $_POST['username']);
@@ -43,6 +43,7 @@
             die();
         }
 
+        $imagePath = "image_evd/{$image}";
         // Prepare Query
         $sql = "INSERT INTO users(
             donor_recipient_type_id,
@@ -71,7 +72,7 @@
             $_POST["lastname"],
             $_POST["donorname"],
             $salt,
-            $image,
+            $imagePath,
             $subtitles,
             $status,
             $_POST['contact'],

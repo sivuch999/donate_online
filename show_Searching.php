@@ -32,7 +32,7 @@
 											value="<?=$row["id"] ?>" 
 											<?=(($_GET["donor_recipient_type_id"] == $row["id"]) ? "selected" : "") ?>
 										>
-											<?=$row["name"] ?>
+											<?=$row["name"]?>
 										</option>
 									<?php } ?>
 									</select>
@@ -51,7 +51,15 @@
 									<label for="demo-copy4">Identify what type of goods that you want to donate (Not checking means selecting all)</label>
 									<div>
 									<?php $i=0; while ($row = mysqli_fetch_assoc($resultGetDonateTypes)) { ?>
-										<input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?=$row["id"] ?>" <?=((in_array($row["id"], $_GET["donate_type_id"])) ? "checked" : "") ?> >
+										<?php
+											$checked = "";
+											if (isset($_GET["donate_type_id"])) {
+												if (in_array($row["id"], $_GET["donate_type_id"])) {
+													$checked = "checked";
+												}
+											}	
+										?>
+										<input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?=$row["id"] ?>" <?=$checked?> >
 										<label for="demo-copy<?=$i?>"><?=$row["name"] ?></label>
 									<?php $i++; } ?>
 									</div>

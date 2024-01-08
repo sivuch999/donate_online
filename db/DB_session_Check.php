@@ -4,8 +4,7 @@
     $username = $_SESSION['username'];
     $password = $_SESSION['password'];
 
-
-    if ($username == "" || $password == "") {
+    if ($_SESSION['username'] == "" || $_SESSION['password'] == "") {
         echo "<script>";
             echo "alert('Please login first');";
             echo "window.location = './'; ";

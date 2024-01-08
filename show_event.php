@@ -7,19 +7,16 @@
 			<article id="main" >
 				<header>
 					<h3>Event Page</h3>
-					<p><?=$username?></p>
+					<p><?=((isset($_SESSION['donorname']) && !empty($_SESSION['donorname'])) ? $_SESSION['donorname'] : "")?></p>
 				</header>
 				<section id="two" class="wrapper alt style2">
-				<?php while ($row = mysqli_fetch_assoc($result)) {
-					$date = $row['date'];
-					$bg_event = "image_event/".$row['bg_event'];
-				?>
+				<?php while ($row = mysqli_fetch_assoc($result)) { ?>
 					<section class="spotlight">
-						<div class="image"><img src="<?=$bg_event?>" alt="ภาพ event" /></div>
+						<div class="image"><img src="<?=$row["bg_event"]?>" alt="ภาพ event" /></div>
 						<div class="content">
 							<h3><?=$row['name']?></h3><br />
 							<p><?=$row['subtitles']?></p>
-							<p><?=$date?></p>
+							<p><?=$row['date']?></p>
 						</div>
 					</section>
 				<?php } ?>

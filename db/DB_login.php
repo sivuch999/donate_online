@@ -26,7 +26,7 @@
         
         if (mysqli_num_rows($result) == 1) { // mysqli_num_row เป็นการนับแถวใน sql ถ้า =1 แสดงว่ามีข้อมูลใน ฐานข้มูล
             $row = mysqli_fetch_assoc($result);// ดึงข้อมูลจาก $result (from TB)
-            $status = $row['status'];     // เจาะจงว่าเอาจาก attribute status
+            $status = $row['status']; // เจาะจงว่าเอาจาก attribute status
             $salt = $row['salt'];
             $passwordWithSalt = $password.$salt;
             $password_on_DB = $row['password'];
@@ -36,6 +36,8 @@
                 $_SESSION['id'] = $row['id'];
                 $_SESSION['username'] = $username;
                 $_SESSION['password'] = $password;
+                $_SESSION['donorname'] = $row["donorname"];
+                $_SESSION['status'] = $row['status'];
                 if ($status == 0){
                     echo "<script>";
                         echo "alert('Your login was successful please wait until the admin confirms the process');";

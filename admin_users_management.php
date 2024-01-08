@@ -6,9 +6,9 @@
     <div class="col-12">
         <label>Please Select User Status</label>
         <select name="show" onchange="this.form.submit()">
-            <option value="show_all" <?php echo ($_GET["show"] == "show_all" || !isset($_GET["show"])) ? "selected" : "" ?> >Show All Member</option>
-            <option value="show_0" <?php echo ($_GET["show"] == "show_0") ? "selected" : "" ?> >Show Only 0 Member</option>
-            <option value="show_1" <?php echo ($_GET["show"] == "show_1") ? "selected" : "" ?> >Show Only 1 Member</option>
+            <option value="show_all" <?php echo (!isset($_GET["show"]) || $_GET["show"] == "show_all") ? "selected" : "" ?> >Show All Member</option>
+            <option value="show_0" <?php echo (isset($_GET["show"]) && $_GET["show"] == "show_0") ? "selected" : "" ?> >Show Only 0 Member</option>
+            <option value="show_1" <?php echo (isset($_GET["show"]) && $_GET["show"] == "show_1") ? "selected" : "" ?> >Show Only 1 Member</option>
         </select>
     </div>
 </form>
@@ -49,7 +49,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <a target="_blank" href="image_evd/<?=$row["picture"]?>"><i class="fa-solid fa-file fa-xl"></i></a>
+                            <a target="_blank" href="<?=$row["picture"]?>"><i class="fa-solid fa-file fa-xl"></i></a>
                         </td>
                     </tr>
             <?php } ?>
