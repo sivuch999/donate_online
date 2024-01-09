@@ -15,20 +15,26 @@
                 <section class="wrapper style5">
                     <div class="inner">
                         <div class="row text-center">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <a href="?page=manage_event">
                                     <label class="form-control btn <?=(($_GET["page"] == "manage_event") ? "btn-dark" : "btn-secondary")?>">Event Management</label>
                                 </a>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <a href="?page=manage_donate_items">
-                                    <label class="form-control btn <?=(($_GET["page"] == "manage_donate_items") ? "btn-dark" : "btn-secondary")?>">Donate Items Transaction Management</label>
+                                    <label class="form-control btn <?=(($_GET["page"] == "manage_donate_items") ? "btn-dark" : "btn-secondary")?>">Donate Items Management</label>
+                                </a>
+                            </div>
+							<div class="col-md-4">
+                                <a href="?page=manage_banks">
+                                    <label class="form-control btn <?=(($_GET["page"] == "manage_banks") ? "btn-dark" : "btn-secondary")?>">Bank Account Management</label>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <?php if ($_GET["page"] == "manage_event") { include("manage_event.php"); }?>
                             <?php if ($_GET["page"] == "manage_donate_items") { include("manage_donate_items.php"); }?>
+							<?php if ($_GET["page"] == "manage_banks") { include("manage_banks.php"); }?>
                         </div>
                     </section>
 			<?php } else { ?>

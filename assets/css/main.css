@@ -1825,7 +1825,7 @@ input, select, textarea {
 		font-weight: 600;
 		margin: 0 0 1em 0;
 	}
-
+	input[type="number"],
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
@@ -1879,6 +1879,7 @@ input, select, textarea {
 			display: none;
 		}
 
+	input[type="number"],
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],

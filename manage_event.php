@@ -11,20 +11,12 @@
 				<input type="date" id="datepicker" class="form-control" name="date" value="<?=((isset($_GET["date"])) ? $_GET["date"] : "")?>" required>
 			</div>
 			<div class="form-outline mb-4">
-				<input type="file" id="form3Example4cg" class="form-control form-control-lg" name="bg_event"/>
-				<label class="form-label" for="form3Example4cg">Upload Event Picture file</label>
+				<label class="form-label">Upload Event Picture file</label>
+				<input type="file" class="form-control form-control-lg" name="bg_event"/>
 			</div>
 			<div class="col-12">
 				<textarea id="demo-message" placeholder="Enter your message about Event" rows="6" name="subtitles" required><?=((isset($_GET["subtitles"])) ? $_GET["subtitles"] : "")?></textarea>
 			</div>
-			
-			<!-- <select class="form-select" id="multiple-select-field" name="select2[]" data-placeholder="Choose anything" multiple>
-				<option value="Christmas Island">Christmas Island</option>
-				<option value="South Sudan">South Sudan</option>
-				<option value="Jamaica">Jamaica</option>
-				<option value="Kenya">Kenya</option>
-				<option value="French Guiana">French Guiana</option>
-			</select> -->
 
 			<div class="col-12">
 				<ul class="select2-block">
@@ -33,7 +25,6 @@
 					<?php } ?>
 				</ul>
 			</div>
-
 
 			<div class="col-12">
 				<ul class="actions">
@@ -75,7 +66,7 @@
 						</a>
 					</td>
 					<td class="text-center">
-						<a href="?&id=<?=$row["id"]?>&name=<?=$row["name"]?>&date=<?=$row["date"]?>&subtitles=<?=$row["subtitles"]?>&bg_event=<?=$row["bg_event"]?>&submit_update=">
+						<a href="?page=manage_event&id=<?=$row["id"]?>&name=<?=$row["name"]?>&date=<?=$row["date"]?>&subtitles=<?=$row["subtitles"]?>&bg_event=<?=$row["bg_event"]?>&submit_update=">
 							<i class="fa-solid fa fa-edit fa-xl text-primary"></i>
 						</a>
 					</td>

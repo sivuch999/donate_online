@@ -32,26 +32,26 @@
                     $subtitles = substr($row["subtitles"], 0, 50); // ตัดที่ 50 คำ
                     $subtitles = ((strlen($subtitles) >= 30) ? "$subtitles..." : $subtitles );
             ?>
-                    <tr>
-                        <td class="text-center"><?=$row["username"]?></td>
-                        <td class="text-center"><?=$row["firstname"]." ".$row["lastname"]?></td>
-                        <td class="text-center"><?=$subtitles?></td>
-                        <td class="text-center"><?=$row["donor_recipient_type_name"]?></td>
-                        <td class="text-center"><?=$row["location"]?></td>
-                        <td class="text-center">
-                            <div class="form-check form-switch" style="padding-left: 1.4em;">
-                                <label>
-                                    <a href="db/DB_admin_update.php?trigger_status_users=&id=<?=$row["id"]?>">
-                                        <input class="form-check-input" type="checkbox" <?=($row["status"] == "1" ? "checked" : "")?>>
-                                        <label></label>
-                                    </a>
-                                </label>
-                            </div>
-                        </td>
-                        <td class="text-center">
-                            <a target="_blank" href="<?=$row["picture"]?>"><i class="fa-solid fa-file fa-xl"></i></a>
-                        </td>
-                    </tr>
+                <tr>
+                    <td class="text-center"><?=$row["username"]?></td>
+                    <td class="text-center"><?=$row["firstname"]." ".$row["lastname"]?></td>
+                    <td class="text-center"><?=$subtitles?></td>
+                    <td class="text-center"><?=$row["donor_recipient_type_name"]?></td>
+                    <td class="text-center"><?=$row["location"]?></td>
+                    <td class="text-center">
+                        <div class="form-check form-switch" style="padding-left: 1.4em;">
+                            <label>
+                                <a href="db/DB_admin_update.php?trigger_status_users=&id=<?=$row["id"]?>">
+                                    <input class="form-check-input" type="checkbox" <?=($row["status"] == "1" ? "checked" : "")?>>
+                                    <label></label>
+                                </a>
+                            </label>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <a target="_blank" href="<?=$row["picture"]?>"><i class="fa-solid fa-file fa-xl"></i></a>
+                    </td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>

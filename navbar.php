@@ -13,7 +13,7 @@
                         <?php if ($_SESSION["type"] == "admin") { ?>
                             <li><a href="admin_page.php?page=admin_users_management">Admin</a></li>
                         <?php } else if ($_SESSION["type"] == "user") { ?>
-                            <li><a href="show_manage_event.php">Event Management</a></li>
+                            <li><a href="show_manage_event.php?page=manage_event">Management</a></li>
                         <?php } ?>
                         <li><a href="logout.php">Log Out</a></li>
                     <?php } else { ?>

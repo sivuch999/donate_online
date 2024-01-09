@@ -55,12 +55,12 @@
     if ($stmt->execute()) {
         $_SESSION["alert_success"] = time() + 1;
         echo "<script>";
-            echo "window.location = '../show_manage_event.php'; ";
+            echo "window.location = '../show_manage_event.php?page=manage_event'; ";
         echo "</script>";
     } else {
         $_SESSION["alert_fail"] = time() + 1;
         echo "<script>";
-            echo "window.location = '../show_manage_event.php'; ";
+            echo "window.location = '../show_manage_event.php?page=manage_event'; ";
         echo "</script>";
     }
 

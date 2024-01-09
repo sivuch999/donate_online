@@ -8,7 +8,7 @@
         echo "</script>";
     }
 
-    if (isset($_GET["submit_update"])) {
+    if (isset($_GET["submit_update"]) && $_GET["page"] == "manage_donate_items") {
         if (!isset($_GET["id"]) || !isset($_GET["status"])) {
             $_SESSION["alert_fail"] = time() + 1;
             echo "<script>";
@@ -29,6 +29,48 @@
         $_SESSION["alert_success"] = time() + 1;
         echo "<script>";
             echo "window.location = './show_manage_event.php?page=manage_donate_items'";
+        echo "</script>";
+    }
+
+    if (isset($_POST["submit_update"]) && $_GET["page"] == "manage_banks") {
+        if (!isset($_POST["id"]) || !isset($_POST["bank_id"])) {
+            $_SESSION["alert_fail"] = time() + 1;
+            echo "<script>";
+                echo "window.location = './show_manage_event.php?page=manage_banks';";
+            echo "</script>";
+            die();
+        }
+
+        $sql = "UPDATE users SET";
+        if (isset($_FILES['bank_account_qrcode']) && !empty($_FILES['bank_account_qrcode']["name"])) {
+            $image = $_FILES['bank_account_qrcode']['name'];
+            $imageTmp = $_FILES['bank_account_qrcode']['tmp_name'];
+            move_uploaded_file($imageTmp, "./image_qrcode/{$image}");
+
+            $imagePath = "image_qrcode/{$image}";
+            $sql .= " bank_account_qrcode = ?,";
+        }
+        $sql .= " bank_id = ?, bank_account_number = ? WHERE id = ?";
+
+        $stmt = $conn->prepare($sql);
+
+        if (isset($imagePath) && !empty($imagePath)) {
+            $stmt->bind_param("ssss", $imagePath, $_POST["bank_id"], $_POST["bank_account_number"], $_POST["id"]);
+        } else {
+            $stmt->bind_param("sss", $_POST["bank_id"], $_POST["bank_account_number"], $_POST["id"]);
+        }
+
+        
+        if (!$stmt->execute()) {
+            $_SESSION["alert_fail"] = time() + 1;
+            echo "<script>";
+                echo "window.location = './show_manage_event.php?page=manage_banks';";
+            echo "</script>";
+            die();
+        }
+        $_SESSION["alert_success"] = time() + 1;
+        echo "<script>";
+            echo "window.location = './show_manage_event.php?page=manage_banks'";
         echo "</script>";
     }
 
@@ -62,6 +104,21 @@
     if (!$resultUserDonateItems) {
         die("Error: ".mysqli_error($conn));
     }
+
+    // Get Banks
+    $sqlBanks = "SELECT * FROM banks WHERE deleted_at IS NULL";
+    $resultBanks = mysqli_query($conn, $sqlBanks);
+    if (!$resultBanks) {
+        die("Error: ".mysqli_error($conn));
+    }
+
+    // Get Users
+    $sqlUsers = "SELECT * FROM users WHERE deleted_at IS NULL AND id = {$_SESSION["id"]}";
+    $resultUsers = mysqli_query($conn, $sqlUsers);
+    if (!$resultUsers) {
+        die("Error: ".mysqli_error($conn));
+    }
+    $rowUsers = mysqli_fetch_assoc($resultUsers);
     
-    // $conn->close();
+    $conn->close();
 ?>
