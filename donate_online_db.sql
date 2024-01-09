@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Jan 05, 2024 at 03:06 PM
+-- Generation Time: Jan 09, 2024 at 03:58 PM
 -- Server version: 5.7.39
--- PHP Version: 7.4.33
+-- PHP Version: 8.2.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,6 +20,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `donate_online_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `banks`
+--
+
+CREATE TABLE `banks` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `banks`
+--
+
+INSERT INTO `banks` (`id`, `name`, `deleted_at`) VALUES
+(1, 'กสิกรไทย', NULL),
+(2, 'กรุงเทพ', NULL),
+(3, 'กรุงไทย', NULL),
+(4, 'ไทยพาณิชย์', NULL);
 
 -- --------------------------------------------------------
 
@@ -72,7 +94,9 @@ INSERT INTO `donor_recipient_types` (`id`, `name`, `deleted_at`) VALUES
 (8, 'Charitable Organizations', NULL),
 (9, 'test', '2023-12-24 11:15:06'),
 (11, 'Testja', '2023-12-24 11:15:10'),
-(12, 'test', '2023-12-24 11:15:08');
+(12, 'test', '2023-12-24 11:15:08'),
+(13, 'Base', '2024-01-05 22:45:10'),
+(14, 'test', '2024-01-05 22:45:08');
 
 -- --------------------------------------------------------
 
@@ -100,7 +124,8 @@ INSERT INTO `events` (`id`, `user_id`, `name`, `subtitles`, `date`, `bg_event`, 
 (10, 30, 'การเสริมสร้างทักษะชีวิตที่จำเป็น', 'การฝึกอบรมที่ออกแบบมาเพื่อให้เยาวชนมีการคิดวิเคราะห์ ทักษะการสื่อสาร การแก้ปัญหา การจัดการอารม การสร้างความสัมพันธ์ และทักษะความรับผิดชอบต่อสังคม เราให้ผู้ปกครอง และผู้ดูแลเป็นส่วนหนึ่งของระบบสนับสนุนโดยเฉพาะอย่างยิ่งในระหว่างการฝึกอบรม', '2024-01-12', 'image_event/1ddebe171c3314db8f65d58ea64f7ab77b275bd3.webp', NULL),
 (11, 31, 'รายงานผลการดำเนินงานต่างๆ ตามวาระ', 'การฝึกอบรมที่ออกแบบมาเพื่อฝึกทักษะด้านการเกษตรหรือการประกอบอาชีพของเยาวชน และให้การฝึกอบรมเกี่ยวกับการออม การจัดการทางการเงิน และการลงทุน นอกจากนี้เรายังออกแบบโปรแกรมการฝึกงานเพื่อเชื่อมโยงเยาวชนที่ผ่านการฝึกอบรมเข้ากับสถาบันวิชาชีพ กลุ่มธุรกิจ และสถาบันการศึกษา เพื่อใหโอกาสในการดำรงชีวิตและทุนการศึกษา', '2024-01-05', 'image_event/dde1166a48f4d58c965784111995772bf478ee00.webp', NULL),
 (12, 31, 'การพัฒนาการทำงานเป็นทีมและทักษะการเป็นผู้นำ', 'การเตรียมให้วัยรุ่นมีทักษะการเป็นผู้นำเพื่อให้พวกเขาสามารถเป็นตัวแทนของชุมชนและจังหวัดของตนในเวทีเยาวชนแห่งชาติและเวทีระดับชาติอื่นๆ เราจัดให้มีสภาเยาวชนในพื้นที่โครงการของเรา เพื่อเสริมสร้างให้พวกเขาสามารถทำงานได้โดยมีเครือข่ายและความร่วมมือที่แข็งแกร่งกับสภาเยาวชนอื่นๆ เพื่อให้พวกเขาสามารถมีส่วนร่วมในการเปลี่ยนแปลงนโยบายการพัฒนา และการดำเนินการกับสถาบันที่เกี่ยวข้องทั้งในระดับจังหวัด ระดับภูมิภาค และระดับประเทศ\r\n\r\n', '2024-01-29', 'image_event/a73d0d0f982d144a7bf9b39c5e62ff39aa05aada.webp', NULL),
-(14, 30, 'การฝึกอบรมและการทำการเกษตรแบบธรรมชาติ', 'เราอบรมให้ครอบครัวมีความรู้และทักษะในการผลิตอาหารที่ปลอดภัยและดีต่อสุขภาพ เราฝึกอบรมครอบครัวและเกษตรกรเกี่ยวกับการทำเกษตรธรรมชาติ และการใช้สมุนไพรตามภูมิปัญญาท้องถิ่น และการดูแลรักษาเมล็ดพันธุ์ที่มีความหลากหลาย เราเปิดให้มีการแลกเปลี่ยนแนวทางปฏิบัติที่ดีที่สุดในการทำเกษตรปลอดภัยภายในและระหว่างชุมชนที่เราทำงานด้วย', '2023-12-28', 'image_event/776bc5e444ff6924f80b043c77866690e1a9e764.webp', NULL);
+(14, 30, 'การฝึกอบรมและการทำการเกษตรแบบธรรมชาติ', 'เราอบรมให้ครอบครัวมีความรู้และทักษะในการผลิตอาหารที่ปลอดภัยและดีต่อสุขภาพ เราฝึกอบรมครอบครัวและเกษตรกรเกี่ยวกับการทำเกษตรธรรมชาติ และการใช้สมุนไพรตามภูมิปัญญาท้องถิ่น และการดูแลรักษาเมล็ดพันธุ์ที่มีความหลากหลาย เราเปิดให้มีการแลกเปลี่ยนแนวทางปฏิบัติที่ดีที่สุดในการทำเกษตรปลอดภัยภายในและระหว่างชุมชนที่เราทำงานด้วย', '2023-12-28', 'image_event/776bc5e444ff6924f80b043c77866690e1a9e764.webp', NULL),
+(15, 30, 'test', 'test', '2024-01-20', '', '2024-01-05 22:47:10');
 
 -- --------------------------------------------------------
 
@@ -110,6 +135,7 @@ INSERT INTO `events` (`id`, `user_id`, `name`, `subtitles`, `date`, `bg_event`, 
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `bank_id` int(11) DEFAULT NULL,
   `donor_recipient_type_id` int(11) DEFAULT NULL,
   `username` varchar(255) NOT NULL,
   `password` text NOT NULL,
@@ -122,6 +148,8 @@ CREATE TABLE `users` (
   `status` varchar(1) NOT NULL,
   `contact` varchar(255) NOT NULL,
   `location` text NOT NULL,
+  `bank_account_number` varchar(255) DEFAULT NULL,
+  `bank_account_qrcode` text,
   `deleted_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -129,9 +157,47 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `donor_recipient_type_id`, `username`, `password`, `firstname`, `lastname`, `donorname`, `salt`, `picture`, `subtitles`, `status`, `contact`, `location`, `deleted_at`) VALUES
-(30, 1, 'user1', '$2y$10$j.o/mQYyvFR7ComYSuUszeMHIrqHtxh3XBdTxR4geOUbbeqtdgMz2', 'ยูสเซอร์', 'ทดสอบ1', 'มูลนิธิร่วมบริจาค A', '7WoYbo1UdK3TntS', 'image_evd/ใบสำคัญแสดงการจดทะเบียน.png', '-', '1', '0923536333', '50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900', NULL),
-(31, 2, 'user2', '$2y$10$rmDFzj9Ky87QwIWs/7T.POATTJeu6RJ6hpbzk38PD5S/4WP8rWkKi', 'ยูสเซอร์', 'ทดสอบ2', 'มูลนิธิร่วมบริจาค B', 'qMS3Mf6W51ARRfM', 'image_evd/CTF-800x800.jpg', 'ของขวัญที่ดีที่สุดคือของขวัญที่ผู้ให้เลือกด้วยความปรารถนาดีต่อผู้รับ ของขวัญที่ดีที่สุดของเด็กคนหนึ่งอาจเป็นสิ่งของหรูหราราคาแพง ของเล่นหรือแม้แต่เสื้อผ้าชุดใหม่ แต่ในโลกของเด็กยากไร้ อาจต้องการเพียงโอกาสที่จะช่วยให้ชีวิตพวกเขาเปลี่ยนแปลง เราขอร่วมเป็นส่วนหนึ่งในความเปลี่ยนแปลงนั้น', '1', 'moonnithi_b@gmail.com', '9/1 m5 Phahon Yothin Rd, Khlong Nueng, Khlong Luang District, Pathum Thani 12120', NULL);
+INSERT INTO `users` (`id`, `bank_id`, `donor_recipient_type_id`, `username`, `password`, `firstname`, `lastname`, `donorname`, `salt`, `picture`, `subtitles`, `status`, `contact`, `location`, `bank_account_number`, `bank_account_qrcode`, `deleted_at`) VALUES
+(30, 2, 1, 'user1', '$2y$10$j.o/mQYyvFR7ComYSuUszeMHIrqHtxh3XBdTxR4geOUbbeqtdgMz2', 'ยูสเซอร์', 'ทดสอบ1', 'มูลนิธิร่วมบริจาค A', '7WoYbo1UdK3TntS', 'image_evd/ใบสำคัญแสดงการจดทะเบียน.png', '-', '1', '0923536333', '50 Ngamwongwan Rd, Lat Yao, Chatuchak, Bangkok 10900', '557-216-2-582', 'image_qrcode/promote-1-full-city-plus-thaitea.png', NULL),
+(31, NULL, 2, 'user2', '$2y$10$rmDFzj9Ky87QwIWs/7T.POATTJeu6RJ6hpbzk38PD5S/4WP8rWkKi', 'ยูสเซอร์', 'ทดสอบ2', 'มูลนิธิร่วมบริจาค B', 'qMS3Mf6W51ARRfM', 'image_evd/CTF-800x800.jpg', 'ของขวัญที่ดีที่สุดคือของขวัญที่ผู้ให้เลือกด้วยความปรารถนาดีต่อผู้รับ ของขวัญที่ดีที่สุดของเด็กคนหนึ่งอาจเป็นสิ่งของหรูหราราคาแพง ของเล่นหรือแม้แต่เสื้อผ้าชุดใหม่ แต่ในโลกของเด็กยากไร้ อาจต้องการเพียงโอกาสที่จะช่วยให้ชีวิตพวกเขาเปลี่ยนแปลง เราขอร่วมเป็นส่วนหนึ่งในความเปลี่ยนแปลงนั้น', '1', 'moonnithi_b@gmail.com', '9/1 m5 Phahon Yothin Rd, Khlong Nueng, Khlong Luang District, Pathum Thani 12120', '', '', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_donate_items`
+--
+
+CREATE TABLE `user_donate_items` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `req_user_id` int(11) DEFAULT NULL COMMENT 'ผู้ร้องขอจากทางเว็บไซต์',
+  `donate_type_id` int(11) NOT NULL,
+  `status` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0' COMMENT '0=รอยืนยัน // 1=ยืนยัน // 2=ไม่ผ่าน',
+  `donor_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'ชื่อผู้บริจาค',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'ชื่อสิ่งของ',
+  `picture` text COLLATE utf8mb4_unicode_ci,
+  `created_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `deleted_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `user_donate_items`
+--
+
+INSERT INTO `user_donate_items` (`id`, `user_id`, `req_user_id`, `donate_type_id`, `status`, `donor_name`, `name`, `picture`, `created_at`, `deleted_at`) VALUES
+(1, 30, NULL, 2, '0', 'ผู้บริจาค คนที่ A', 'หมู 3 กิโลกรัม', 'image_evd/CTF-800x800.jpg', '2024-01-08 15:47:32', NULL),
+(2, 30, NULL, 2, '0', 'ผู้บริจาค คนที่ A', 'ไก่ 3 กิโลกรัม', 'image_evd/ใบสำคัญแสดงการจดทะเบียน.png', '2024-01-08 15:47:32', NULL),
+(3, 30, NULL, 1, '0', '', 'ไขควง 3 แพ็ค', '', '2024-01-08 15:47:32', NULL),
+(4, 30, NULL, 1, '0', 'ทดสอบ ผู้บริจาค', 'บริจาค A 1 ชิ้น', NULL, '2024-01-09 00:25:13', NULL),
+(5, 30, NULL, 1, '0', '', 'บริจาค A 2 ชิ้น', 'image_event/', '2024-01-09 00:26:52', NULL),
+(6, 30, NULL, 2, '2', '', 'บริจาค B 5 จาน', 'image_event/', '2024-01-09 00:26:52', NULL),
+(7, 30, NULL, 4, '0', '', 'บริจาค C 1 ผืน', 'image_event/', '2024-01-09 00:27:39', NULL),
+(8, 30, NULL, 3, '0', 'ไม่ประสงค์ออกนาม', 'บริจาค D 1 ตัว', 'image_event/', '2024-01-09 00:28:11', NULL),
+(9, 30, NULL, 1, '0', 'ไม่ประสงค์ออกนาม', 'บริจาค A 3 ชิ้น', NULL, '2024-01-09 01:29:32', NULL),
+(10, 30, NULL, 1, '0', 'ไม่ประสงค์ออกนาม', 'บริจาค B 5 ผืน', NULL, '2024-01-09 01:29:32', NULL),
+(14, 30, NULL, 1, '1', 'ไม่ประสงค์ออกนาม', 'บริจาค A 1 ชิ้น', 'image_items/Screenshot 2567-01-03 at 10.19.21.png', '2024-01-09 01:39:40', NULL),
+(15, 30, NULL, 2, '1', 'ไม่ประสงค์ออกนาม', 'บริจาค B 1 ตัว', NULL, '2024-01-09 01:39:40', NULL),
+(16, 30, NULL, 3, '0', 'ไม่ประสงค์ออกนาม', 'บริจาค C 1 ผืน', 'image_items/Screenshot 2567-01-03 at 10.18.47.png', '2024-01-09 01:39:40', NULL);
 
 -- --------------------------------------------------------
 
@@ -163,6 +229,12 @@ INSERT INTO `user_donate_types` (`id`, `user_id`, `donate_type_id`, `deleted_at`
 --
 
 --
+-- Indexes for table `banks`
+--
+ALTER TABLE `banks`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `donate_types`
 --
 ALTER TABLE `donate_types`
@@ -186,7 +258,14 @@ ALTER TABLE `events`
 --
 ALTER TABLE `users`
   ADD UNIQUE KEY `PRIMARY_ID` (`id`) USING BTREE,
-  ADD KEY `donor_recipient_type_id` (`donor_recipient_type_id`) USING BTREE;
+  ADD KEY `donor_recipient_type_id` (`donor_recipient_type_id`) USING BTREE,
+  ADD KEY `bank_id` (`bank_id`);
+
+--
+-- Indexes for table `user_donate_items`
+--
+ALTER TABLE `user_donate_items`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user_donate_types`
@@ -201,6 +280,12 @@ ALTER TABLE `user_donate_types`
 --
 
 --
+-- AUTO_INCREMENT for table `banks`
+--
+ALTER TABLE `banks`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `donate_types`
 --
 ALTER TABLE `donate_types`
@@ -210,19 +295,25 @@ ALTER TABLE `donate_types`
 -- AUTO_INCREMENT for table `donor_recipient_types`
 --
 ALTER TABLE `donor_recipient_types`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `events`
 --
 ALTER TABLE `events`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT for table `user_donate_items`
+--
+ALTER TABLE `user_donate_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user_donate_types`
@@ -244,7 +335,8 @@ ALTER TABLE `events`
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
-  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`donor_recipient_type_id`) REFERENCES `donor_recipient_types` (`id`);
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`donor_recipient_type_id`) REFERENCES `donor_recipient_types` (`id`),
+  ADD CONSTRAINT `users_ibfk_2` FOREIGN KEY (`bank_id`) REFERENCES `banks` (`id`);
 
 --
 -- Constraints for table `user_donate_types`
