@@ -2,7 +2,7 @@
 	<form method="post" action="" enctype="multipart/form-data">
 		<div class="row gtr-uniform">
 			<input type="hidden" name="id" value="<?=((isset($_SESSION["id"])) ? $_SESSION["id"] : "")?>">
-			<div class="col-6 col-12-xsmall">
+			<div class="col-4 col-12-xsmall">
                 <label>*Bank</label>
                 <select name="bank_id" required>
                     <option value="">- Please Select -</option>
@@ -11,8 +11,12 @@
                     <?php } ?>
                 </select>
 			</div>
-			<div class="col-6 col-12-xsmall">
-				<label for="demo-copy3">Account Number</label>
+			<div class="col-4 col-12-xsmall">
+				<label for="demo-copy3">*Account Fullname</label>
+				<input type="text" class="form-control" name="bank_account_fullname" value="<?=((isset($rowUsers["bank_account_fullname"])) ? $rowUsers["bank_account_fullname"] : "")?>" required>
+			</div>
+			<div class="col-4 col-12-xsmall">
+				<label for="demo-copy3">*Account Number</label>
 				<input type="text" class="form-control" name="bank_account_number" value="<?=((isset($rowUsers["bank_account_number"])) ? $rowUsers["bank_account_number"] : "")?>" required>
 			</div>
 			<div class="form-outline mb-4">

@@ -45,7 +45,7 @@
                     echo "</script>";
                 } else {
                     echo "<script>";
-                        echo "window.location = '../show_manage_event.php'; "; //เมื่อทำการตรวจสอบเสร็จให้ไปยังหน้า การจัดการของแต่ละ user
+                        echo "window.location = '../show_manage_event.php?page=manage_event'; "; //เมื่อทำการตรวจสอบเสร็จให้ไปยังหน้า การจัดการของแต่ละ user
                     echo "</script>";
                 }
             } else {

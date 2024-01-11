@@ -52,8 +52,9 @@
 
     // Get donate_types
     $sqlGetDonateTypes = "SELECT * FROM donate_types WHERE donate_types.deleted_at IS NULL ORDER BY id DESC";
-    $resultGetDonateTypes = mysqli_query($conn, $sqlGetDonateTypes);
-    if (!$resultGetDonateTypes) { die("Error: " . mysqli_error($conn)); }
+    $resultDonateTypes = mysqli_query($conn, $sqlGetDonateTypes);
+    // print_r($resultDonateTypes);
+    if (!$resultDonateTypes) { die("Error: " . mysqli_error($conn)); }
     
     $conn->close(); 
 ?>

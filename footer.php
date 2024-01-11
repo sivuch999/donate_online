@@ -35,4 +35,48 @@
             $(".alert").alert('close');
         }, 3000);
     });
+    function addInput() {
+            let newInput = `
+				<div class="row form-input-wrapper">
+					<div class="col-3 col-12-xsmall">
+						<label>*สิ่งของที่ต้องการบริจาค</label>
+						<input type="text" name="name[]" placeholder="Please enter the name of the item" required/>
+					</div>
+					<div class="col-2 col-12-xsmall">
+						<label>*ประเภท</label>
+						<select name="donate_type_id[]" required>
+							<option value="">- Please Select -</option>
+							<?php mysqli_data_seek($resultDonateTypes, 0); // Reset pointer to the beginning ?>
+							<?php while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
+								<option value="<?=$row["id"]?>"><?=$row["name"]?></option>
+							<?php } ?>
+						</select>
+					</div>
+					<div class="col-1 col-12-xsmall">
+						<label>*จำนวน</label>
+						<input type="number" name="amount[]" placeholder="" value="1" required/>
+					</div>
+					<div class="col-1 col-12-xsmall">
+						<label>*หน่วย</label>
+						<input type="text" name="unit[]" placeholder="" required/>
+					</div>
+					<div class="col-4 col-12-xsmall">
+						<label>รูป</label>
+						<input type="file" class="form-control form-control-lg" name="picture[]"/>
+					</div>
+					<div class="col-1 col-12-xsmall">
+						<label>*ลบแถว</label>
+						<button type="button" class="form-control btn btn-danger" style="height: 2.75em" onclick="deleteRow(this)">X</button>
+					</div>
+				</div>`;
+			$("#form-input").append(newInput)
+            // document.getElementById("form-input").insertAdjacentHTML("beforeend", newInput);
+        }
+        function deleteRow(button) {
+			let row = $(button).parent().parent()
+			if (row.parent().find(".form-input-wrapper").length <= 1) {
+				return
+			}
+            row.remove()
+        }
 </script>

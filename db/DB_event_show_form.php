@@ -25,52 +25,27 @@
         if (!$resultDonateTypes) {
             die("Error: ".mysqli_error($conn));
         }
+
+        // Get Users
+        $sqlUsers = "SELECT users.*, banks.name AS bank_name 
+            FROM users 
+            LEFT JOIN banks ON users.bank_id = banks.id 
+                AND banks.deleted_at IS NULL
+            WHERE
+                users.deleted_at IS NULL 
+                AND users.id = {$_GET["user_id"]}";
+        $resultUsers = mysqli_query($conn, $sqlUsers);
+        if (!$resultUsers) {
+            die("Error: ".mysqli_error($conn));
+        }
+        $rowUsers = mysqli_fetch_assoc($resultUsers);
+        // print_r($rowUsers);
         
     }
 
     if (isset($_POST["submit"])) {
         // print_r($_POST);
-        $donorName = (!empty($_POST["donor_name"])) ? $_POST["donor_name"] : "ไม่ประสงค์ออกนาม";
-        for ($i=0; $i<count($_POST["name"]); $i++) {
-            $imagePath = null;
-            // echo $_POST["name"][$i]."/".$_POST["unit"][$i]."<br>";
-            print_r($_FILES['picture']);
-            if (isset($_FILES['picture']) && !empty($_FILES['picture']["name"][$i])) {
-                $image = $_FILES['picture']['name'][$i];
-                $imageTmp = $_FILES['picture']['tmp_name'][$i];
-                move_uploaded_file($imageTmp, "./image_items/{$image}");
-                $imagePath = "image_items/{$image}";
-            }
-            // die();
-            $itemName = $_POST["name"][$i]." ".$_POST["amount"][$i]." ".$_POST["unit"][$i];
-            // echo $itemName;
-            $sql = "INSERT INTO user_donate_items(
-                user_id,
-                donate_type_id,
-                donor_name,
-                name,
-                picture
-            ) VALUE (?,?,?,?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss",
-                $_POST["user_id"],
-                $_POST["donate_type_id"][$i],
-                $donorName,
-                $itemName,
-                $imagePath
-            );
-            if (!$stmt->execute()) {
-                $_SESSION["alert_fail"] = time() + 1;
-                echo "<script type='text/javascript'>";
-                    echo "window.location = './show_event.php?user_id={$_POST["user_id"]}';";
-                echo "</script>";
-                die();
-            }
-            $_SESSION["alert_success"] = time() + 1;
-            echo "<script type='text/javascript'>";
-                echo "window.location = './show_event.php?user_id={$_POST["user_id"]}';";
-            echo "</script>";
-        }
+     
     }
 
     $conn->close(); 

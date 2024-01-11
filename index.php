@@ -11,7 +11,7 @@
 						You can find a place that you want to donate by clicking this button<br />
 					</p>
 					<ul class="actions special">
-						<li><a href="show_Searching.php" class="button primary">Find a place to donate</a></li>
+						<li><a href="show_Searching.php?page=searching_website" class="button primary">Find a place to donate</a></li>
 					</ul>
 				</div>
 				<a href="#three" class="more scrolly">About us</a>

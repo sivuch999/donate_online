@@ -8,7 +8,7 @@
                 <div id="menu">
                     <ul>
                         <li><a href="./">Home</a></li>
-                        <li><a href="show_Searching.php">Searching</a></li>
+                        <li><a href="show_Searching.php?page=searching_website">Searching</a></li>
                     <?php if (isset($_SESSION["type"])) { ?>
                         <?php if ($_SESSION["type"] == "admin") { ?>
                             <li><a href="admin_page.php?page=admin_users_management">Admin</a></li>

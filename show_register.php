@@ -57,7 +57,7 @@
 								<div class="col-12 col-12-small" >
 									<label for="demo-copy4">*Identify what type of goods that you want to donate (Not checking means selecting all)</label>
 									<div class="checkbox-group required">
-									<?php $i=0; while ($row = mysqli_fetch_assoc($resultGetDonateTypes)) { ?>
+									<?php $i=0; while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
 										<input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?= $row["id"] ?>">
 										<label for="demo-copy<?=$i?>"><?= $row["name"] ?></label>
 									<?php $i++; } ?>

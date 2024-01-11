@@ -10,7 +10,7 @@
     else{
         echo "<script type='text/javascript'>";
         echo "alert('noting send to this page??? ');";
-        echo "window.location = '../show_Searching.php'; ";
+        echo "window.location = '../show_Searching.php?page=searching_website'; ";
         echo "</script>";
     }
 ?>

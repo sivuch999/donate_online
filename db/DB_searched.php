@@ -3,7 +3,7 @@ if(isset($_POST['Searching'])){
         // Retrieve search criteria from the form  1.รับข้อมูลจาก form action 
     if(empty($_POST['request_item']) && empty($_POST['search_name']) && empty($_POST['search_type'])){
             echo "<script type='text/javascript'>";          
-                echo "window.location = '../show_Searching.php'; ";        
+                echo "window.location = '../show_Searching.php?page=searching_website'; ";        
             echo "</script>";
     }
     elseif (!empty($_POST['request_item'])){
@@ -103,14 +103,14 @@ if(isset($_POST['Searching'])){
     else {
         echo "<script type='text/javascript'>";
         echo "alert('not found any match');";     
-        echo "window.location = '../show_Searching.php'; ";        
+        echo "window.location = '../show_Searching.php?page=searching_website'; ";        
         echo "</script>";
     }
 
     // Close the database connection
     $db = null;
 }else{
-    include('db/DB_show_Searching.php');
+    include('db/DB_show_Searching.php?page=searching_website');
 }
 $_SESSION['time_login'] = time();
 
