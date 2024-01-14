@@ -20,6 +20,11 @@
 				<input type="text" class="form-control" name="bank_account_number" value="<?=((isset($rowUsers["bank_account_number"])) ? $rowUsers["bank_account_number"] : "")?>" required>
 			</div>
 			<div class="form-outline mb-4">
+				<div class="text-center">
+				<?php if (isset($rowUsers["bank_account_qrcode"]) && !empty($rowUsers["bank_account_qrcode"])) { ?>
+					<img style="max-width: 15rem;" src="<?=$rowUsers["bank_account_qrcode"]?>" alt="ภาพ qrcode" />
+				<?php } ?>
+				</div>
                 <label class="form-label">Upload Account QR Code</label>
 				<input type="file" class="form-control form-control-lg" name="bank_account_qrcode"/>
 			</div>

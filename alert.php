@@ -1,7 +1,7 @@
 <?php if (isset($_SESSION["alert_success"]) && time() < $_SESSION["alert_success"]) { ?>
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
-        Successfully
+        <?php echo ((isset($_SESSION["alert_msg"]) && !empty($_SESSION["alert_msg"]) ? $_SESSION["alert_msg"] : "Successfully")) ?>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="box-shadow: inset 0 0 0 0px;"></button>
     </div>
 <?php } ?>

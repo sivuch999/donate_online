@@ -1,4 +1,5 @@
 <html>
+	<?php session_start(); ?>
 	<?php include("header.php"); ?>
 	<body class="is-preload">
 		<div id="page-wrapper">

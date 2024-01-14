@@ -1,4 +1,5 @@
 <form method="get" action="">
+    <input type="hidden" name="page" value="searching_user">
     <div class="row gtr-uniform">
         <div class="col-md-6 col-12-xsmall">
             <label>Name of donor recipient</label>
@@ -64,8 +65,9 @@
             <div class="card">
                 <div class="card-body" style="overflow: hidden;">
                     <h6 class="card-title"><?=$row["donorname"]?></h6>
-                    <p class="card-subtitle mb-2 text-muted inline-overflow-wrap" style="font-size: 0.5rem;"><?=$row["donor_recipient_types_name"]?></p>
-                    <p class="card-subtitle mb-2 text-muted inline-overflow-wrap" style="font-size: 0.5rem;"><?=$row["location"]?></p>
+                    <p class="card-subtitle mb-2 text-muted" style="font-size: 0.5rem;"><?=$row["donor_recipient_types_name"]?></p>
+                    <p class="card-subtitle mb-2 text-muted inline-overflow-wrap" style="font-size: 0.5rem;"><b>Want: </b><?=$row["donate_types_name"]?></p>
+                    <p class="card-subtitle mb-2 text-muted inline-overflow-wrap" style="font-size: 0.5rem;"><b>Address: </b><?=$row["location"]?></p>
                     <hr/>
                     <p class="card-text overflow-scroll" style="height: 10rem"><?=$subtitles?></p>
                 </div>
@@ -74,6 +76,7 @@
                         <a href="show_event.php?user_id=<?=$row["id"]?>"><button class="btn btn-dark form-control">View</button></a>
                     </div>
                 </div>
+
             </div>
         </div>
     <?php } ?>

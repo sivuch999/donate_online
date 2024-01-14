@@ -66,12 +66,12 @@
 						</a>
 					</td>
 					<td class="text-center">
-						<a href="?page=manage_event&id=<?=$row["id"]?>&name=<?=$row["name"]?>&date=<?=$row["date"]?>&subtitles=<?=$row["subtitles"]?>&bg_event=<?=$row["bg_event"]?>&submit_update=">
+						<a href="?page=<?=$_GET["page"]?>&id=<?=$row["id"]?>&name=<?=$row["name"]?>&date=<?=$row["date"]?>&subtitles=<?=$row["subtitles"]?>&bg_event=<?=$row["bg_event"]?>&submit_update=">
 							<i class="fa-solid fa fa-edit fa-xl text-primary"></i>
 						</a>
 					</td>
 					<td class="text-center">
-						<a href="db/DB_delete.php?delete=&id=<?=$row["id"]?>" onclick='return confirmDelete();'><i class="fa-solid fa fa-trash fa-xl text-danger"></i></a>
+						<a href="db/DB_delete.php?page=<?=$_GET["page"]?>&delete=&id=<?=$row["id"]?>" onclick='return confirmDelete();'><i class="fa-solid fa fa-trash fa-xl text-danger"></i></a>
 					</td>
 				</tr>
 			<?php } ?>

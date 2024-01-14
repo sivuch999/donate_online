@@ -2,8 +2,8 @@
     include('config.php'); // เชื่อมต่อฐานข้อมูล
     session_start();
 
-    print_r($_POST["select2"]);
-    die();
+    // print_r($_POST["select2"]);
+    // die();
 
     if (isset($_POST['submit_insert'])) {
         $imagePath = "";

@@ -2,11 +2,11 @@
 <?php
     if ($_GET["page"] == "admin_users_management") {
 
-        $condition = "";
+        $condition = "WHERE users.deleted_at IS NULL AND users.is_admin = '0'";
         if (isset($_GET['show']) && $_GET["show"] == "show_0") {
-            $condition .= "WHERE status = 0";
+            $condition .= " AND users.status = 0";
         } else if (isset($_GET['show']) && $_GET["show"] == "show_1") {
-            $condition .= "WHERE status = 1";
+            $condition .= " AND users.status = 1";
         }
     
         $sql = "SELECT

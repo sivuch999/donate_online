@@ -68,7 +68,7 @@
 									<label class="form-label" for="form3Example4cg">*Upload picture file</label>
 								</div>
 								<div class="col-12">
-									<label>*Subtitles</label>
+									<label>Subtitles</label>
 									<textarea id="demo-message" placeholder="Enter your message about donor recipient" rows="6" name="subtitles"></textarea>
 								</div>
 								<div class="col-4 col-12-xsmall">

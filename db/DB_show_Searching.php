@@ -37,7 +37,10 @@
             AND user_donate_types.deleted_at IS NULL
         INNER JOIN donate_types ON user_donate_types.donate_type_id = donate_types.id
             AND donate_types.deleted_at IS NULL
-        WHERE users.deleted_at IS NULL".((!empty($conditionGetUser)) ? "$conditionGetUser" : "")."
+        WHERE
+            users.deleted_at IS NULL".((!empty($conditionGetUser)) ? "$conditionGetUser" : "")."
+            AND users.status = '1'
+            AND users.is_admin = '0'
         GROUP BY
             users.id
     ";

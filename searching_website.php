@@ -2,7 +2,7 @@
     <div class="col-12">
         <h4 style="color: unset;">รวมบริจาคสิ่งของกับเว็บไซต์ของเรา</h4>
         <form method="post" action="db/DB_update_event.php" enctype="multipart/form-data" class="mt-3">
-        <input type="hidden" name="go_page" value="../show_Searching.php?page=searching_user">
+        <input type="hidden" name="go_page" value="../show_Searching.php?page=searching_website">
             <div class="row gtr-uniform">
                 <div class="col-12 col-12-xsmall">
                     <label>ชื่อหรือรายละเอียดผู้บริจาค</label>

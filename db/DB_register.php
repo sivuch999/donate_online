@@ -89,7 +89,7 @@
         if ($stmt->affected_rows <= 0) { // ตรวจดู มีแถวใน table ที่มีการเปลี่ยนแปลงหรือไม่ ใช้กับ insert update delete 
             $_SESSION["alert_success"] = time() + 1;
             echo "<script type='text/javascript'>";
-                echo "window.location = '../index.php';";
+                echo "window.location = '../show_register.php';";
             echo "</script>";
             die();
         }
@@ -103,7 +103,7 @@
         }
         $_SESSION["alert_success"] = time() + 1;
         echo "<script type='text/javascript'>";
-            echo "window.location = '../index.php';";
+            echo "window.location = '../show_register.php';";
         echo "</script>";
         
     }

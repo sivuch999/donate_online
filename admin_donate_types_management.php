@@ -25,8 +25,8 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th class="text-center">Delete</th>
                 <th class="text-center">Edit</th>
+                <th class="text-center">Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -37,7 +37,7 @@
                     <a href="?page=admin_donate_types_management&id=<?=$row["id"]?>"><i class="fa-solid fa fa-edit fa-xl text-primary"></i></a>
                 </td>
                 <td class="text-center">
-                    <a href="db/DB_admin_update.php?delete_donate_types=&id=<?=$row["id"]?>"><i class="fa-solid fa fa-trash fa-xl text-danger"></i></a>
+                    <a href="db/DB_admin_update.php?delete_donate_types=&id=<?=$row["id"]?>"><i class="fa-solid fa fa-trash fa-xl text-danger" onclick='return confirmDelete();'></i></a>
                 </td>
             </tr>
         <?php } ?>

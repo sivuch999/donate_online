@@ -10,13 +10,13 @@
         if (!$stmt->execute()) {
             $_SESSION["alert_fail"] = time() + 1;
             echo "<script>";
-                echo "window.location = '../show_manage_event.php';";
+                echo "window.location = '../show_manage_event.php?page={$_GET["page"]}';";
             echo "</script>";
             die();
         }
         $_SESSION["alert_success"] = time() + 1;
         echo "<script>";
-            echo "window.location = '../show_manage_event.php'";
+            echo "window.location = '../show_manage_event.php?page={$_GET["page"]}'";
         echo "</script>";
 
     }
