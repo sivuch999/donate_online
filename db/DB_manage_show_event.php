@@ -30,9 +30,11 @@
             $set = $_GET["req_user_id"];
         } else if ($_GET["page"] == "admin_manage_request_items" && isset($_GET["req_user_id"])) {
             $sql .= " user_id = ?";
-            $set = $_GET["req_user_id"];
             if ($_GET["is_req_approve"] == "0") {
+                $set = null;
                 $sql .= " ,req_user_id = NULL";
+            } else if ($_GET["is_req_approve"] == "1") {
+                $set = $_GET["req_user_id"];
             }
         }
         $sql .= " WHERE id = ?";
@@ -134,6 +136,8 @@
             AND user_donate_items.req_user_id IS NULL
             AND user_donate_items.status = '1'
         ";
+    } else if ($_GET["page"] == "admin_manage_request_items") {
+        $sqlUserDonateItems .= " AND user_donate_items.user_id IS NULL";
     }
     $sqlUserDonateItems .= " ORDER BY user_donate_items.id DESC";
     $resultUserDonateItems = mysqli_query($conn, $sqlUserDonateItems);

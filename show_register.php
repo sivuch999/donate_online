@@ -56,12 +56,13 @@
 								</div>
 								<div class="col-12 col-12-small" >
 									<label for="demo-copy4">*Identify what type of goods that you want to donate (Not checking means selecting all)</label>
-									<div class="checkbox-group required">
+									<select class="form-select" id="multiple-select-field" name="donate_type_id[]" data-placeholder="Choose anything" multiple required>
 									<?php $i=0; while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
-										<input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?= $row["id"] ?>">
-										<label for="demo-copy<?=$i?>"><?= $row["name"] ?></label>
+										<!-- <input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?= $row["id"] ?>">
+										<label for="demo-copy<?=$i?>"><?= $row["name"] ?></label> -->
+										<option value="<?=$row["id"]?>"><?=$row["name"]?></option>
 									<?php $i++; } ?>
-									</div>
+									</select>
 								</div>
 								<div class="form-outline mb-4">
 									<input type="file" id="form3Example4cg" class="form-control form-control-lg" name="picture" required/>
@@ -99,12 +100,19 @@
 				return
 			}
 
-			if ($('div.checkbox-group.required :checkbox:checked').length <= 0) {
-				e.preventDefault()
-				$('div.checkbox-group.required :checkbox')[0].focus()
-				return
-			}
+			// if ($('div.checkbox-group.required :checkbox:checked').length <= 0) {
+			// 	e.preventDefault()
+			// 	$('div.checkbox-group.required :checkbox')[0].focus()
+			// 	return
+			// }
 		})
 	})
+
+	$('#multiple-select-field').select2( {
+		theme: "bootstrap-5",
+		width: $( this ).data( 'width' ) ? $( this ).data( 'width' ) : $( this ).hasClass( 'w-100' ) ? '100%' : 'style',
+		placeholder: $( this ).data( 'placeholder' ),
+		closeOnSelect: false,
+	});
 	
 </script>

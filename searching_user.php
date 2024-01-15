@@ -18,7 +18,7 @@
             <?php while ($row = mysqli_fetch_assoc($resultGetDonorRecipientTypes)) { ?>
                 <option
                     value="<?=$row["id"] ?>" 
-                    <?=(($_GET["donor_recipient_type_id"] == $row["id"]) ? "selected" : "") ?>
+                    <?=((isset($_GET["donor_recipient_type_id"]) && $_GET["donor_recipient_type_id"] == $row["id"]) ? "selected" : "") ?>
                 >
                     <?=$row["name"]?>
                 </option>
@@ -37,20 +37,21 @@
         </div>
         <div class="col-md-12 col-12-small">
             <label for="demo-copy4">Identify what type of goods that you want to donate (Not checking means selecting all)</label>
-            <div>
+            <select class="form-select" id="multiple-select-field" name="donate_type_id[]" data-placeholder="Choose anything" multiple>
             <?php $i=0; while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
                 <?php
-                    $checked = "";
+                    $selected = "";
                     if (isset($_GET["donate_type_id"])) {
                         if (in_array($row["id"], $_GET["donate_type_id"])) {
-                            $checked = "checked";
+                            $selected = "selected";
                         }
                     }	
                 ?>
-                <input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?=$row["id"] ?>" <?=$checked?> >
-                <label for="demo-copy<?=$i?>"><?=$row["name"] ?></label>
+                <option value="<?=$row["id"]?>" <?=$selected?>><?=$row["name"]?></option>
+                <!-- <input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?=$row["id"] ?>" <?=$checked?> >
+                <label for="demo-copy<?=$i?>"><?=$row["name"]?></label> -->
             <?php $i++; } ?>
-            </div>
+            </select>
         </div>
         <div class="col-md-12">
             <input type="submit" class="btn btn-success form-control" name="submit" value="search"/>

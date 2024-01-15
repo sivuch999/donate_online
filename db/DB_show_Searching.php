@@ -28,7 +28,17 @@
     $sqlGetUser = "SELECT
             users.*,
             donor_recipient_types.name AS donor_recipient_types_name,
-            GROUP_CONCAT(donate_types.name SEPARATOR ', ') AS donate_types_name
+            (
+                SELECT
+                    GROUP_CONCAT(donate_types.name SEPARATOR ', ') AS donate_types_name
+                FROM
+                    user_donate_types
+                INNER JOIN donate_types ON user_donate_types.donate_type_id = donate_types.id
+                    AND donate_types.deleted_at IS NULL
+                WHERE
+                    user_donate_types.deleted_at IS NULL
+                    AND users.id = user_donate_types.user_id
+            ) AS donate_types_name
         FROM
             users
         INNER JOIN donor_recipient_types ON users.donor_recipient_type_id = donor_recipient_types.id
@@ -38,7 +48,8 @@
         INNER JOIN donate_types ON user_donate_types.donate_type_id = donate_types.id
             AND donate_types.deleted_at IS NULL
         WHERE
-            users.deleted_at IS NULL".((!empty($conditionGetUser)) ? "$conditionGetUser" : "")."
+            users.deleted_at IS NULL"
+            .((!empty($conditionGetUser)) ? "$conditionGetUser" : "")."
             AND users.status = '1'
             AND users.is_admin = '0'
         GROUP BY

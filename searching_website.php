@@ -21,6 +21,7 @@
                             <option value="">- Please Select -</option>
                             <?php mysqli_data_seek($resultDonateTypes, 0); ?>
                             <?php while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
+                                <?php if ($_GET["page"] == "searching_website" && ($row["id"] == 9 || $row["name"] == "Money")) { continue; }?>
                                 <option value="<?=$row["id"]?>"><?=$row["name"]?></li>
                             <?php } ?>
                         </select>
