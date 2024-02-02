@@ -56,15 +56,14 @@
             picture,
             subtitles,
             status,
-            contact,
-            location
-        ) VALUE (?,?,?,?,?,?,?,?,?,?,?,?)";
+            contact
+        ) VALUE (?,?,?,?,?,?,?,?,?,?,?)";
         $stmt = $conn->prepare($sql); // ใช้ prepare แยก user input ออกจาก SQL code เพื่อป้องกัน sql injection
 
         // Binding Data into Query && Exucute
         $status = "0";
         $subtitles = (($_POST['subtitles']) ? $_POST['subtitles'] : "-");
-        $stmt->bind_param("ssssssssssss",
+        $stmt->bind_param("sssssssssss",
             $_POST["donor_recipient_type_id"],
             $_POST["username"],
             $hashedPassword,
@@ -75,8 +74,7 @@
             $imagePath,
             $subtitles,
             $status,
-            $_POST['contact'],
-            $_POST['location']
+            $_POST['contact']
         );
         if (!$stmt->execute()) {
             $_SESSION["alert_fail"] = time() + 1;
@@ -94,13 +92,13 @@
             die();
         }
 
-        $user_id = $conn->insert_id;
-        foreach ($_POST["donate_type_id"] as $key => $value) {
-            $sql = "INSERT INTO user_donate_types(user_id, donate_type_id) VALUES(?,?)";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ss", $user_id, $value);
-            $stmt->execute();
-        }
+        // $user_id = $conn->insert_id;
+        // foreach ($_POST["donate_type_id"] as $key => $value) {
+        //     $sql = "INSERT INTO user_donate_types(user_id, donate_type_id) VALUES(?,?)";
+        //     $stmt = $conn->prepare($sql);
+        //     $stmt->bind_param("ss", $user_id, $value);
+        //     $stmt->execute();
+        // }
         $_SESSION["alert_success"] = time() + 1;
         echo "<script type='text/javascript'>";
             echo "window.location = '../show_register.php';";

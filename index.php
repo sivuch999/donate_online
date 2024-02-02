@@ -4,14 +4,14 @@
 		<div id="page-wrapper">
 			<?php include("navbar.php"); ?>
 			<!-- Banner -->
-			<section id="banner" style="background-image: url('images/banner.jpg');">
+			<section id="banner" style="background-image: url('images/donate_online_index_background.png');">
 				<div class="inner">
-					<h2>Welcome to Donate Online</h2>
-					<p>this is the website for those who want to donate to Make This World Better<br />
-						You can find a place that you want to donate by clicking this button<br />
+					<h2 style="color: black;">ยินดีต้อนรับสู่การบริจาคออนไลน์</h2>
+					<p style="color: black !important;">นี่คือเว็บไซต์สำหรับผู้ที่ต้องการบริจาคเพื่อทำให้โลกนี้ดีขึ้น<br />
+					คุณสามารถค้นหาสถานที่ที่คุณต้องการบริจาคได้โดยคลิกที่ปุ่มนี้<br />
 					</p>
 					<ul class="actions special">
-						<li><a href="show_Searching.php?page=searching_website" class="button primary">Find a place to donate</a></li>
+						<li><a href="show_Searching.php?page=searching_user" class="button primary">ค้นหาสถานที่บริจาค</a></li>
 					</ul>
 				</div>
 				<a href="#three" class="more scrolly">About us</a>

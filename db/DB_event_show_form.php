@@ -14,17 +14,17 @@
         $result = mysqli_query($conn, $sql);
 
         // Get Donate Type
-        $sqlDonateTypes = "SELECT donate_types.id, donate_types.name 
-            FROM user_donate_types
-            INNER JOIN donate_types ON user_donate_types.donate_type_id = donate_types.id
-                AND donate_types.deleted_at IS NULL
-            WHERE 
-                user_donate_types.deleted_at IS NULL 
-                AND user_donate_types.user_id = {$_GET["user_id"]}";
-        $resultDonateTypes = mysqli_query($conn, $sqlDonateTypes);
-        if (!$resultDonateTypes) {
-            die("Error: ".mysqli_error($conn));
-        }
+        // $sqlDonateTypes = "SELECT donate_types.id, donate_types.name 
+        //     FROM user_donate_types
+        //     INNER JOIN donate_types ON user_donate_types.donate_type_id = donate_types.id
+        //         AND donate_types.deleted_at IS NULL
+        //     WHERE 
+        //         user_donate_types.deleted_at IS NULL 
+        //         AND user_donate_types.user_id = {$_GET["user_id"]}";
+        // $resultDonateTypes = mysqli_query($conn, $sqlDonateTypes);
+        // if (!$resultDonateTypes) {
+        //     die("Error: ".mysqli_error($conn));
+        // }
 
         // Get Users
         $sqlUsers = "SELECT users.*, banks.name AS bank_name 

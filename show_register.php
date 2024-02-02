@@ -13,7 +13,7 @@
 						<form method="post" action="db/DB_register.php" enctype="multipart/form-data"> <!-- add enctype="multipart/form-data" เมื่อต้องการ upload file -->
 							<div class="row gtr-uniform">
 								<div class="col-4 col-12-xsmall">
-									<label>*Name of donor recipient</label>
+									<label>ใส่ Username ผู้รับบริจาค</label>
 									<input type="text" name="username" id="demo-username"  placeholder="Name of donor recipient " required />
 								</div>
 								<div class="col-4 col-12-xsmall">
@@ -21,32 +21,32 @@
 									<input type="password" name="password" id="demo-password"  placeholder="Password " required />
 								</div>
 								<div class="col-4 col-12-xsmall">
-									<label>*Confirm Password</label>
+									<label>*ยืนยัน Password</label>
 									<input type="password" name="confirm_password" id="demo-confirm-password"  placeholder="Confirm Password " required />
 									<div class="invalid-feedback">*Confirm password doesn't match</div>
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label>Firstname</label>
+									<label>ชื่อ</label>
 									<input type="text" name="firstname" id="demo-username"  placeholder="Firstname " />
 								</div>
 								<div class="col-6 col-12-xsmall">
-									<label>Lastname</label>
+									<label>นามสกุล</label>
 									<input type="text" name="lastname" id="demo-username"  placeholder="Lastname " />
 								</div>
 								<div class="col-12 col-12-xsmall">
-									<label>*Donorname</label>
+									<label>*ชื่อสถานรับบริจาค</label>
 									<input type="text" name="donorname" id="demo-username"  placeholder="Donorname " required />
 								</div>
-								<div class="col-12 col-12-xsmall">
-									<label>*Location</label>
+								<!-- <div class="col-12 col-12-xsmall">
+									<label>*สถานที่ตั้ง</label>
 									<input type="text" name="location" id="demo-location"  placeholder="Your Location (province -- district -- Street -- Number )" required />
-								</div>
+								</div> -->
 								<div class="col-12 col-12-xsmall">
-									<label>*Contact</label>
+									<label>ช่องทางการติดต่อ</label>
 									<input type="text" name="contact" id="demo-contact"  placeholder="Your Contact (Phone_Number or Email or LineID or Other )" required/>
 								</div>
 								<div class="col-md-6 col-12-xsmall">
-									<label>*Type of donor recipient</label>
+									<label>*ประเภทของสถานรับบริจาค</label>
 									<select  id="demo-category2" name="donor_recipient_type_id" required>
 										<option value="">- Please Select -</option>
 									<?php while ($row = mysqli_fetch_assoc($resultGetDonorRecipientTypes)) { ?>
@@ -54,22 +54,24 @@
 									<?php } ?>
 									</select>
 								</div>
-								<div class="col-12 col-12-small" >
-									<label for="demo-copy4">*Identify what type of goods that you want to donate (Not checking means selecting all)</label>
+								<!-- <div class="col-12 col-12-small" >
+									<label for="demo-copy4">*เลือกสิ่งที่ต้องการรับบริจาคเป็นพิเศษ (ถ้าไม่ใส่ถือว่าต้องการทั้งหมด)</label>
 									<select class="form-select" id="multiple-select-field" name="donate_type_id[]" data-placeholder="Choose anything" multiple required>
-									<?php $i=0; while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
-										<!-- <input type="checkbox" id="demo-copy<?=$i?>" name="donate_type_id[]" value="<?= $row["id"] ?>">
-										<label for="demo-copy<?=$i?>"><?= $row["name"] ?></label> -->
+									<?php 
+										// $i=0; while ($row = mysqli_fetch_assoc($resultDonateTypes)) { 
+									?>
 										<option value="<?=$row["id"]?>"><?=$row["name"]?></option>
-									<?php $i++; } ?>
+									<?php
+										// $i++; }
+									?>
 									</select>
-								</div>
+								</div> -->
 								<div class="form-outline mb-4">
 									<input type="file" id="form3Example4cg" class="form-control form-control-lg" name="picture" required/>
-									<label class="form-label" for="form3Example4cg">*Upload picture file</label>
+									<label class="form-label" for="form3Example4cg">ใส่หลักฐานทางราชการที่ยืนยันสถานะของสถานะปัจจุบันของสถานรับบริจาค</label>
 								</div>
 								<div class="col-12">
-									<label>Subtitles</label>
+									<label>เกี่ยวกับสถานรับบริจาค</label>
 									<textarea id="demo-message" placeholder="Enter your message about donor recipient" rows="6" name="subtitles"></textarea>
 								</div>
 								<div class="col-4 col-12-xsmall">

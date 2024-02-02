@@ -7,7 +7,7 @@
 			<article id="main" >
 				<header>
 					<h3>Event Page</h3>
-					<p><?=((isset($_SESSION['donorname']) && !empty($_SESSION['donorname'])) ? $_SESSION['donorname'] : "")?></p>
+					<p><?=((isset($rowUsers['donorname']) && !empty($rowUsers['donorname'])) ? $rowUsers['donorname'] : "")?></p>
 				</header><?php include('alert.php'); ?>
 				<section id="one" class="row wrapper alt style2">
 				<?php while ($row = mysqli_fetch_assoc($result)) { ?>
@@ -25,7 +25,7 @@
 					<div class="col-12 mt-3 text-center">
 						<h2>ร่วมเป็นส่วนหนึ่งกับเรา</h2>
 					</div>
-					<div class="col-12 mt-4">
+					<!-- <div class="col-12 mt-4">
 						<h4>ช่องทาง: บริจาคสิ่งของ</h4>
 						<form method="post" action="db/DB_update_event.php" enctype="multipart/form-data">
 							<input type="hidden" name="user_id" value="<?=$_GET["user_id"]?>">
@@ -80,7 +80,7 @@
 								</div>
 							</div>
 						</form>
-					</div>
+					</div> -->
 					<?php if (isset($rowUsers['bank_name']) && !empty($rowUsers['bank_name'])) { ?>
 					<div class="col-12 mt-3">
 						<h4>ช่องทาง: เลขบัญชี</h4>

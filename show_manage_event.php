@@ -20,12 +20,12 @@
                 <section class="wrapper style5">
                     <div class="inner">
                         <div class="row text-center">
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <a href="?page=manage_event">
                                     <label class="form-control btn <?=(($_GET["page"] == "manage_event") ? "btn-dark" : "btn-secondary")?>">Event</label>
                                 </a>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-2">
                                 <a href="?page=manage_donate_items">
                                     <label class="form-control btn <?=(($_GET["page"] == "manage_donate_items") ? "btn-dark" : "btn-secondary")?>">Donate Items</label>
                                 </a>
@@ -36,14 +36,20 @@
                                 </a>
                             </div>
 							<div class="col-md-3">
+								<a href="?page=manage_donate_types">
+									<label class="form-control btn <?=(($_GET["page"] == "manage_donate_types") ? "btn-dark" : "btn-secondary")?>">Donate Types</label>
+								</a>
+							</div>
+							<div class="col-md-2">
                                 <a href="?page=manage_banks">
-                                    <label class="form-control btn <?=(($_GET["page"] == "manage_banks") ? "btn-dark" : "btn-secondary")?>">Bank Account</label>
+                                    <label class="form-control btn <?=(($_GET["page"] == "manage_banks") ? "btn-dark" : "btn-secondary")?>">Bank</label>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <?php if ($_GET["page"] == "manage_event") { include("manage_event.php"); }?>
                             <?php if ($_GET["page"] == "manage_donate_items" || $_GET["page"] == "manage_request_items") { include("manage_donate_items.php"); }?>
+							<?php if ($_GET["page"] == "manage_donate_types") { include("manage_donate_types.php"); }?>
 							<?php if ($_GET["page"] == "manage_banks") { include("manage_banks.php"); }?>
                         </div>
                     </section>

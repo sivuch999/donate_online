@@ -35,16 +35,16 @@
 
     } else if ($_GET["page"] == "admin_donate_types_management") {
 
-        $sql = "SELECT * FROM donate_types WHERE deleted_at IS NULL ORDER BY id ASC";
-        $result = mysqli_query($conn, $sql);
-        if (!$result) { die("Error: ".mysqli_error($conn)); }
+        // $sql = "SELECT * FROM donate_types WHERE deleted_at IS NULL ORDER BY id ASC";
+        // $result = mysqli_query($conn, $sql);
+        // if (!$result) { die("Error: ".mysqli_error($conn)); }
 
-        if (isset($_GET["id"])) {
-            $sql = "SELECT * FROM donate_types WHERE deleted_at IS NULL AND id={$_GET["id"]} ORDER BY id ASC";
-            $resultOne = mysqli_query($conn, $sql);
-            if (!$resultOne) { die("Error: ".mysqli_error($conn)); }
-            $rowOne = mysqli_fetch_assoc($resultOne);
-        }
+        // if (isset($_GET["id"])) {
+        //     $sql = "SELECT * FROM donate_types WHERE deleted_at IS NULL AND id={$_GET["id"]} ORDER BY id ASC";
+        //     $resultOne = mysqli_query($conn, $sql);
+        //     if (!$resultOne) { die("Error: ".mysqli_error($conn)); }
+        //     $rowOne = mysqli_fetch_assoc($resultOne);
+        // }
 
     }
 

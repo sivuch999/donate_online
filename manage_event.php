@@ -20,7 +20,7 @@
 
 			<div class="col-12">
 				<ul class="select2-block">
-					<?php while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
+					<?php while ($row = mysqli_fetch_assoc($resultGetDonateTypes)) { ?>
 						<li class="select2-choice"><?=$row["name"]?></li>
 					<?php } ?>
 				</ul>

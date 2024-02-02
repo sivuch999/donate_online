@@ -6,9 +6,9 @@
     <div class="col-12">
         <label>Please Select User Status</label>
         <select name="show" onchange="this.form.submit()">
-            <option value="show_all" <?php echo (!isset($_GET["show"]) || $_GET["show"] == "show_all") ? "selected" : "" ?> >Show All Member</option>
-            <option value="show_0" <?php echo (isset($_GET["show"]) && $_GET["show"] == "show_0") ? "selected" : "" ?> >Show Only 0 Member</option>
-            <option value="show_1" <?php echo (isset($_GET["show"]) && $_GET["show"] == "show_1") ? "selected" : "" ?> >Show Only 1 Member</option>
+            <option value="show_all" <?php echo (!isset($_GET["show"]) || $_GET["show"] == "show_all") ? "selected" : "" ?> >แสดงสมาชิกทั้งหมด</option>
+            <option value="show_0" <?php echo (isset($_GET["show"]) && $_GET["show"] == "show_0") ? "selected" : "" ?> >แสดงสมาชิกทั้งหมดที่ ยังไม่ได้ยืนยัน</option>
+            <option value="show_1" <?php echo (isset($_GET["show"]) && $_GET["show"] == "show_1") ? "selected" : "" ?> >แสดงสมาชิกทั้งหมดที่ ยืนยันสถานะแล้ว</option>
         </select>
     </div>
 </form>

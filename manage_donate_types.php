@@ -1,16 +1,16 @@
 <?php include('db/DB_admin.php'); ?>
 
 <h4 class="mt-4">Donate Types Management</h4>
-<form method="post" action="db/DB_admin_update.php" enctype="multipart/form-data">
+<form method="post" action="" enctype="multipart/form-data">
     <div class="row gtr-uniform">
         <div class="col-12 col-12-xsmall">
             <label>Name of donate</label>
-            <input type="hidden" name="id" value="<?=((isset($rowOne["id"]) && $rowOne["id"]) ? $rowOne["id"] : "" )?>">
-            <input type="text" name="name" id="demo-username"  placeholder="Name of donate" value="<?=((isset($rowOne["id"]) && $rowOne["id"]) ? $rowOne["name"] : "" )?>" required />
+            <input type="hidden" name="id" value="<?=((isset($rowGetDonateTypesOne["id"]) && $rowGetDonateTypesOne["id"]) ? $rowGetDonateTypesOne["id"] : "" )?>">
+            <input type="text" name="name" id="demo-username"  placeholder="Name of donate" value="<?=((isset($rowGetDonateTypesOne["id"]) && $rowGetDonateTypesOne["id"]) ? $rowGetDonateTypesOne["name"] : "" )?>" required />
         </div>
         <div class="col-4 col-12-xsmall">
             <ul class="actions">
-            <?php if (isset($rowOne["id"])) { ?>
+            <?php if (isset($rowGetDonateTypesOne["id"])) { ?>
                 <li><input type="submit" value="Update" class="btn btn-primary" name="update_donate_types"/></li>
             <?php } else { ?>
                 <li><input type="submit" value="Add" class="btn btn-success" name="add_donate_types"/></li>
@@ -30,14 +30,14 @@
             </tr>
         </thead>
         <tbody>
-        <?php  while ($row = mysqli_fetch_assoc($result)) { ?>
+        <?php  while ($row = mysqli_fetch_assoc($resultGetDonateTypes)) { ?>
             <tr>
                 <td><?=$row["name"]?></td>
                 <td class="text-center">
-                    <a href="?page=admin_donate_types_management&id=<?=$row["id"]?>"><i class="fa-solid fa fa-edit fa-xl text-primary"></i></a>
+                    <a href="?page=manage_donate_types&id=<?=$row["id"]?>"><i class="fa-solid fa fa-edit fa-xl text-primary"></i></a>
                 </td>
                 <td class="text-center">
-                    <a href="db/DB_admin_update.php?delete_donate_types=&id=<?=$row["id"]?>"><i class="fa-solid fa fa-trash fa-xl text-danger" onclick='return confirmDelete();'></i></a>
+                    <a href="?page=manage_donate_types.php&delete_donate_types=&id=<?=$row["id"]?>"><i class="fa-solid fa fa-trash fa-xl text-danger" onclick='return confirmDelete();'></i></a>
                 </td>
             </tr>
         <?php } ?>

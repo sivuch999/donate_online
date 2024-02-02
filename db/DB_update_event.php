@@ -56,16 +56,20 @@
             // echo $itemName;
             $sql = "INSERT INTO user_donate_items(
                 user_id,
-                donate_type_id,
                 donor_name,
+                donor_email,
+                donor_tel,
+                donor_contact,
                 name,
                 picture
-            ) VALUE (?,?,?,?,?)";
+            ) VALUE (?,?,?,?,?,?,?)";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sssss",
+            $stmt->bind_param("sssssss",
                 $_POST["user_id"],
-                $_POST["donate_type_id"][$i],
                 $donorName,
+                $_POST["donor_email"],
+                $_POST["donor_tel"],
+                $_POST["donor_contact"],
                 $itemName,
                 $imagePath
             );

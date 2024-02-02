@@ -11,13 +11,13 @@
                     <th class="text-center">File</th>
 					<th class="text-center">Status</th>
 				<?php if ($_GET["page"] == "manage_donate_items" || $_GET["page"] == "admin_manage_request_items") { ?>
-					<th class="text-center">A/R</th>
+					<!-- <th class="text-center">A/R</th> -->
 				<?php } else if ($_GET["page"] == "manage_request_items") { ?>
 					<th class="text-center">Request</th>
 				<?php } ?>
 				<?php if ($_GET["page"] == "admin_manage_request_items") { ?>
-					<th class="text-center">Requested</th>
-					<th class="text-center">RA/RR</th>
+					<!-- <th class="text-center">Requested</th>
+					<th class="text-center">RA/RR</th> -->
 				<?php } ?>
 				</tr>
 			</thead>
@@ -47,18 +47,18 @@
                     </td>
                     <td class="text-center"><?=$status[$row["status"]]?></td>
 				<?php if ($_GET["page"] == "manage_donate_items" || $_GET["page"] == "admin_manage_request_items") { ?>
-                    <td class="text-center">
+                    <!-- <td class="text-center"> -->
 					<?php if ($row["status"] == '0') { ?>
-                        <a class="form-control" style="text-decoration:unset;"
+                        <!-- <a class="form-control" style="text-decoration:unset;"
 							href="?page=<?=$_GET["page"]?>&id=<?=$row["id"]?>&status=1&submit_update=" onclick='return confirmItems(1);'>
 							<i class="fa-solid fa fa-check fa-xl text-success"></i>
 						</a>
 						<a class="form-control" style="text-decoration:unset;" 
 							href="?page=<?=$_GET["page"]?>&id=<?=$row["id"]?>&status=2&submit_update=" onclick='return confirmItems(2);'>
 							<i class="fa-solid fa fa-close fa-xl text-danger"></i>
-						</a>
+						</a> -->
 					<?php } ?>
-					</td>
+					<!-- </td> -->
 				<?php } else if ($_GET["page"] == "manage_request_items") { ?>
 					<td class="text-center">
                         <a href="?page=<?=$_GET["page"]?>&id=<?=$row["id"]?>&req_user_id=<?=$_SESSION["id"]?>&submit_update=" onclick='return confirmItems(3);'>
@@ -67,19 +67,19 @@
 					</td>
 				<?php } ?>
 				<?php if ($_GET["page"] == "admin_manage_request_items") { ?>
-					<td class="text-center"><?=$reqRonorName?></td>
-					<td class="text-center">
+					<!-- <td class="text-center"><?=$reqRonorName?></td>
+					<td class="text-center"> -->
 					<?php if (isset($row["req_user_id"]) && !empty($row["req_user_id"] && empty($row["user_id"]))) { ?>
-                        <a class="form-control" style="text-decoration:unset;"
+                        <!-- <a class="form-control" style="text-decoration:unset;"
 							href="?page=<?=$_GET["page"]?>&id=<?=$row["id"]?>&req_user_id=<?=$row["req_user_id"]?>&is_req_approve=1&submit_update=" onclick='return confirmItems(1);'>
 							<i class="fa-solid fa fa-check fa-xl text-success"></i>
 						</a>
 						<a  class="form-control" style="text-decoration:unset;"
 							href="?page=<?=$_GET["page"]?>&id=<?=$row["id"]?>&req_user_id=<?=$row["req_user_id"]?>&is_req_approve=0&submit_update=" onclick='return confirmItems(1);'>
 							<i class="fa-solid fa fa-close fa-xl text-danger"></i>
-						</a>
+						</a> -->
 					<?php } ?>
-					</td>
+					<!-- </td> -->
 				<?php } ?>
 				</tr>
 			<?php $i++; } ?>
@@ -88,7 +88,7 @@
 	</div>
 
 <!-- Show Wating for approve Table -->
-<?php if ($_GET["page"] == "manage_request_items") { ?>
+<!-- <?php if ($_GET["page"] == "manage_request_items") { ?>
 	<div class="table-wrapper mt-5">
 		<h4>Waiting for approve</h4>
 		<table class="table table-striped" style="width:100%">
@@ -124,7 +124,7 @@
 			</tbody>
 		</table>
 	</div>
-<?php } ?>
+<?php } ?> -->
 
 </div>
 
