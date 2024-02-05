@@ -212,9 +212,17 @@
 
     // Start Donate Types
     if (isset($_POST["add_donate_types"])) {
-        $sql = "INSERT INTO donate_types(user_id, name) VALUE (?,?)";
+        $imagePath = "";
+        if (isset($_FILES['picture']) && !empty($_FILES['picture']["name"])) {
+            $image = $_FILES['picture']['name'];
+            $imageTmp = $_FILES['picture']['tmp_name'];
+            move_uploaded_file($imageTmp, "./image_example_items/{$image}");
+
+            $imagePath = "image_example_items/{$image}";
+        }
+        $sql = "INSERT INTO donate_types(user_id, name, picture) VALUE (?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $_SESSION["id"], $_POST["name"]);
+        $stmt->bind_param("sss", $_SESSION["id"], $_POST["name"], $imagePath);
         if (!$stmt->execute()) {
             $_SESSION["alert_fail"] = time() + 1;
             echo "<script type='text/javascript'>";
@@ -229,9 +237,24 @@
     }
 
     if (isset($_POST["update_donate_types"])) {
-        $sql = "UPDATE donate_types SET name = ? WHERE id = ?";
+        $sql = "UPDATE donate_types SET";
+        if (isset($_FILES['picture']) && !empty($_FILES['picture']["name"])) {
+            $image = $_FILES['picture']['name'];
+            $imageTmp = $_FILES['picture']['tmp_name'];
+            move_uploaded_file($imageTmp, "./image_example_items/{$image}");
+
+            $imagePath = "image_example_items/{$image}";
+            $sql .= " picture=?,";
+        }
+        $sql .= " name=? WHERE id=?";
+
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ss", $_POST["name"], $_POST["id"]);
+        if (isset($imagePath) && !empty($imagePath)) {
+            $stmt->bind_param("sss", $imagePath, $_POST["name"], $_POST["id"]);
+        } else {
+            $stmt->bind_param("ss", $_POST["name"], $_POST["id"]);
+        }
+        
         if (!$stmt->execute()) {
             $_SESSION["alert_fail"] = time() + 1;
             echo "<script type='text/javascript'>";

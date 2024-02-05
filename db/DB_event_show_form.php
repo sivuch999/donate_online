@@ -3,11 +3,21 @@
     include("config.php");
     
     if (isset($_GET["user_id"])) {
+        // $conditions = "";
+        // if (isset($_GET["event_id"])) {
+        //     $conditions .= " AND id = {$_GET["event_id"]} ORDER BY id DESC";
+        // }
+        // $sql = "SELECT * FROM events
+        //     WHERE deleted_at IS NULL 
+        //     AND user_id = {$_GET["user_id"]}
+        //     $conditions";
+        // $result = mysqli_query($conn, $sql);
+
         $conditions = "";
-        if (isset($_GET["event_id"])) {
-            $conditions .= " AND id = {$_GET["event_id"]} ORDER BY id DESC";
-        }
-        $sql = "SELECT * FROM events
+        // if (isset($_GET["event_id"])) {
+        //     $conditions .= " AND id = {$_GET["event_id"]} ORDER BY id DESC";
+        // }
+        $sql = "SELECT * FROM donate_types
             WHERE deleted_at IS NULL 
             AND user_id = {$_GET["user_id"]}
             $conditions";

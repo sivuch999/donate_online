@@ -6,82 +6,34 @@
 			<?php include('navbar.php'); ?>
 			<article id="main" >
 				<header>
-					<h3>Event Page</h3>
+					<h3>Donate Items Page</h3>
 					<p><?=((isset($rowUsers['donorname']) && !empty($rowUsers['donorname'])) ? $rowUsers['donorname'] : "")?></p>
 				</header><?php include('alert.php'); ?>
-				<section id="one" class="row wrapper alt style2">
+				<section id="one" class="row wrapper alt style2 pt-3">
 				<?php while ($row = mysqli_fetch_assoc($result)) { ?>
-					<div class="spotlight">
-						<div class="image"><img src="<?=$row["bg_event"]?>" alt="ภาพ event" /></div>
-						<div class="content">
-							<h3><?=$row['name']?></h3><br />
-							<p><?=$row['subtitles']?></p>
-							<p><?=$row['date']?></p>
+					<!-- <div class="row"> -->
+					<?php
+						$picture = "noimage.png";
+						if(isset($row["picture"]) && !empty($row["picture"])) { $picture = $row["picture"]; }
+					?>
+						<div class="col-md-8 text-center pt-4">
+							<label style="color:white; font-size: 1.5rem"><?=$row['name']?></label>
+							<!-- <p><?=$row['subtitles']?></p> -->
+							<!-- <p><?=$row['date']?></p> -->
 						</div>
-					</div>
+						<div class="col-md-4 text-center p-1">
+							<a href="<?=$picture?>" target="_blank">
+								<img style="max-width: 100px;" src="<?=$picture?>" alt="ภาพ event" />
+							</a>
+						</div>
+					<!-- </div> -->
 				<?php } ?>
 				</section>
 				<section id="two" class="row wrapper alt style2 p-4">
+					<?php if (isset($rowUsers['bank_name']) && !empty($rowUsers['bank_name'])) { ?>
 					<div class="col-12 mt-3 text-center">
 						<h2>ร่วมเป็นส่วนหนึ่งกับเรา</h2>
 					</div>
-					<!-- <div class="col-12 mt-4">
-						<h4>ช่องทาง: บริจาคสิ่งของ</h4>
-						<form method="post" action="db/DB_update_event.php" enctype="multipart/form-data">
-							<input type="hidden" name="user_id" value="<?=$_GET["user_id"]?>">
-							<input type="hidden" name="go_page" value="../show_event.php?user_id=<?=$_GET["user_id"]?>">
-							<div class="row gtr-uniform text-white">
-								<div class="col-12 col-12-xsmall">
-									<label>ชื่อหรือรายละเอียดผู้บริจาค</label>
-									<input type="text" name="donor_name"/>
-								</div>
-							</div>
-							<div id="form-input" class="gtr-uniform text-white mt-3">
-								<div class="row form-input-wrapper">
-									<div class="col-3 col-12-xsmall">
-										<label>*สิ่งของที่ต้องการบริจาค</label>
-										<input type="text" name="name[]" placeholder="Please enter the name of the item" required/>
-									</div>
-									<div class="col-2 col-12-xsmall">
-										<label>*ประเภท</label>
-										<select name="donate_type_id[]" required>
-											<option value="">- Please Select -</option>
-											<?php while ($row = mysqli_fetch_assoc($resultDonateTypes)) { ?>
-												<option value="<?=$row["id"]?>"><?=$row["name"]?></li>
-											<?php } ?>
-										</select>
-									</div>
-									<div class="col-1 col-12-xsmall">
-										<label>*จำนวน</label>
-										<input type="number" name="amount[]" placeholder="" value="1" required/>
-									</div>
-									<div class="col-1 col-12-xsmall">
-										<label>*หน่วย</label>
-										<input type="text" name="unit[]" placeholder="" required/>
-									</div>
-									<div class="col-4 col-12-xsmall">
-										<label>รูป</label>
-										<input type="file" class="form-control form-control-lg" name="picture[]"/>
-									</div>
-									<div class="col-1 col-12-xsmall">
-										<label>ลบแถว</label>
-										<button type="button" class="form-control btn btn-danger" style="height: 2.75em" onclick="deleteRow(this)">X</button>
-									</div>
-								</div>
-							</div>
-							<div class="row text-white mt-5">
-								<div class="col-12 col-12-xsmall">
-									<input type="button" class="form-control btn btn-secondary" value="เพิ่มแถว" onclick="addInput()">
-								</div>
-							</div>
-							<div class="row text-white mt-5">
-								<div class="col-12 col-12-xsmall">
-									<input type="submit" class="form-control btn btn-success" name="submit_save_donate_items" value="ยืนยัน" >
-								</div>
-							</div>
-						</form>
-					</div> -->
-					<?php if (isset($rowUsers['bank_name']) && !empty($rowUsers['bank_name'])) { ?>
 					<div class="col-12 mt-3">
 						<h4>ช่องทาง: เลขบัญชี</h4>
 						<div class="spotlight"></div>

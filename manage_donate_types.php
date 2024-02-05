@@ -8,6 +8,10 @@
             <input type="hidden" name="id" value="<?=((isset($rowGetDonateTypesOne["id"]) && $rowGetDonateTypesOne["id"]) ? $rowGetDonateTypesOne["id"] : "" )?>">
             <input type="text" name="name" id="demo-username"  placeholder="Name of donate" value="<?=((isset($rowGetDonateTypesOne["id"]) && $rowGetDonateTypesOne["id"]) ? $rowGetDonateTypesOne["name"] : "" )?>" required />
         </div>
+        <div class="col-12 col-12-xsmall">
+            <label class="form-label">Examples of donated items</label>
+            <input type="file" class="form-control form-control-lg" name="picture"/>
+        </div>
         <div class="col-4 col-12-xsmall">
             <ul class="actions">
             <?php if (isset($rowGetDonateTypesOne["id"])) { ?>
@@ -27,6 +31,7 @@
                 <th>Name</th>
                 <th class="text-center">Edit</th>
                 <th class="text-center">Delete</th>
+                <th class="text-center">File</th>
             </tr>
         </thead>
         <tbody>
@@ -38,6 +43,11 @@
                 </td>
                 <td class="text-center">
                     <a href="?page=manage_donate_types.php&delete_donate_types=&id=<?=$row["id"]?>"><i class="fa-solid fa fa-trash fa-xl text-danger" onclick='return confirmDelete();'></i></a>
+                </td>
+                <td class="text-center">
+                    <?php if (isset($row["picture"]) && !empty($row["picture"])) { ?>
+                    <a target="_blank" href="<?=$row["picture"]?>"><i class="fa-solid fa-file fa-xl"></i></a>
+                    <?php } ?>
                 </td>
             </tr>
         <?php } ?>
